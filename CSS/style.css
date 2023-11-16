@@ -1,1 +1,273 @@
-/*# sourceMappingURL=style.css.map */
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Rubik+Glitch&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: none;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+html {
+  font-size: 55%;
+}
+
+body {
+  height: 100vh;
+  background: #FFF3DD;
+}
+
+header {
+  height: 10rem;
+  width: 100%;
+  background: #c4d9de;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+header img {
+  height: 8rem;
+}
+header .procura {
+  position: relative;
+  width: 50rem;
+  height: 7rem;
+  /* esconde o LABEL "Buscar" */
+}
+header .procura input {
+  height: 100%;
+  border: none;
+  outline: none;
+  padding-left: 50px;
+  width: 0;
+  position: absolute;
+  top: 5;
+  left: 0;
+  background: none;
+  z-index: 3;
+  transition: width 1s ease-out;
+  cursor: pointer;
+}
+header .procura input:focus {
+  border: 5px solid #fbe4e4;
+  border-radius: 25px;
+  width: 100%;
+  z-index: 1;
+  transition: width 1s ease-in;
+  color: #fff;
+}
+header .procura button {
+  height: 100%;
+  width: 5rem;
+  background: url("lupa.png") center no-repeat;
+  border: none;
+  position: absolute;
+  top: 5;
+  left: 0;
+  z-index: 2;
+  cursor: pointer;
+}
+header .procura button i {
+  font-size: 5rem;
+  color: #fff;
+  padding-left: 1rem;
+}
+header .procura button:focus {
+  outline: none;
+}
+header .procura label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+header .carrinho {
+  width: 10rem;
+  height: 8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  cursor: pointer;
+}
+header .carrinho i {
+  font-size: 8em;
+  outline: none;
+  color: #fff;
+  z-index: 2;
+}
+header .carrinho .noti {
+  position: absolute;
+  background: #fbe4e4;
+  height: 3rem;
+  width: 3rem;
+  border-radius: 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 1rem;
+  right: 1rem;
+  z-index: 3;
+  display: none;
+}
+header .carrinho .noti span {
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: 800;
+}
+
+main.index {
+  display: grid;
+  grid-template-rows: 10rem 31rem 10rem 31rem 10rem 31rem;
+}
+main.index .titulo {
+  width: 15rem;
+  height: 5rem;
+  flex-shrink: 0;
+  margin: 1rem;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  font-weight: 600;
+  align-self: center;
+}
+main.index .livros {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 1rem;
+}
+main.index .livros .item {
+  width: 21rem;
+  display: flex;
+  flex-direction: column;
+  border-radius: 12%;
+  padding-top: 0.5rem;
+  padding-bottom: 1.5rem;
+}
+main.index .livros .item img {
+  height: 15rem;
+  width: 12rem;
+  align-self: center;
+  margin-bottom: 0.5rem;
+  border-radius: 10%;
+}
+main.index .livros .item span {
+  font-size: 1.7rem;
+  font-weight: 800;
+  margin-left: 1rem;
+}
+main.index .livros .item button {
+  align-self: center;
+  height: 2rem;
+  width: 12rem;
+  background: none;
+  outline: none;
+  font-weight: 800;
+  cursor: pointer;
+  margin-top: auto;
+}
+main.index .roxo {
+  background: #C5B1D6;
+}
+main.index .rosa {
+  background: #F7D5E3;
+}
+main.index .verde {
+  background: #bae1d3;
+}
+main.index .branco {
+  color: #fff;
+}
+main.index .preto {
+  color: #000;
+}
+
+main.carrinho {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+main.carrinho .table {
+  width: 80%;
+  border-collapse: collapse;
+  margin: 1.5rem auto;
+  padding: 1rem;
+  background: #E7E7E7;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  height: 53rem;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+}
+main.carrinho .table tr th {
+  font-size: 1.3rem;
+  border-bottom: 1px solid #000;
+}
+main.carrinho .table tr .capa {
+  width: 20%;
+}
+main.carrinho .table tr .infos {
+  width: 65%;
+}
+main.carrinho .table tr .preco {
+  width: 15%;
+}
+main.carrinho .table tbody tr {
+  height: 15rem;
+}
+main.carrinho .table tbody tr td {
+  font-size: 1.3rem;
+  padding-left: 4rem;
+  border-bottom: 1px solid #000;
+}
+main.carrinho .table tbody tr .infos {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 15rem;
+  width: 100%;
+  padding-left: 2rem;
+  color: #fff;
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+main.carrinho .table tbody tr .acoes input {
+  width: 6rem;
+  height: 3rem;
+  margin-right: 1rem;
+  padding-left: 1rem;
+}
+main.carrinho .table tbody tr .acoes button {
+  width: 10rem;
+  height: 3rem;
+  border-radius: 15%;
+  outline: none;
+  background: variave;
+}
+main.carrinho .table tbody tr .acoes button i {
+  margin-left: 1rem;
+}
+main.carrinho .table tbody tr .preco {
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+main.carrinho .table tfoot tr {
+  height: 15rem;
+}
+main.carrinho .table tfoot tr td {
+  font-size: 1.3rem;
+  padding-left: 4rem;
+  font-size: 1.7rem;
+  font-weight: 700;
+}/*# sourceMappingURL=style.css.map */

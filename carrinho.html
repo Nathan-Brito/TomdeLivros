@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/CSS/style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <title>Carrinho de Compras</title>
+</head>
+<body>
+    <header>
+        <a href="/index.html"><img src="/imagens/logo.png" alt=""></a>
+
+        <div class="procura">
+            <input type="text">
+            <button><i class='bx bx-search-alt-2 icone'></i></button>
+        </div>
+
+        <div class="carrinho">
+            <a href="/carrinho.html"><i class='bx bx-cart'></i></a>
+            <div class="noti">
+                <span class="quatCar">0</span>
+            </div>
+        </div>
+    </header>
+    
+    <main class="carrinho">
+        <div class="container table" id="containerProdutos">
+            <table id="tbProdutos" >
+                <thead>
+                    <tr>
+                        <th scope="col" class="capa">Capa</th>
+                        <th scope="col" class="infos">Informações</th>
+                        <th scope="col" class="preco">Preço</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>${produto.capa}</td>
+                        <td class="infos">
+                            <span class="informacoes">${produto.tipo}</span>
+                            <span class="informacoes">${produto.titulo}</span>
+                            <span class="informacoes">${produto.autor}</span>
+                        <div class="acoes">
+                            <input type="number" min="1" value="1" id="quantidade">
+                            <button data-index="${index}" onclick="remove(this)">Delete <i class='bx bx-trash'></i></button>
+                        </div>
+                        </td>
+                        <td class="preco">${produto.preco}</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td>Valor Total:</td>
+                        <td></td>
+                        <td class="final">${valorTotal}</td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </main>
+
+
+
+    <link rel="stylesheet" href="/JS/scripts.js">
+</body>
+</html>

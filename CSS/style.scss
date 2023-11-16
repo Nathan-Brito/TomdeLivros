@@ -1,0 +1,306 @@
+@use "variaveis";
+@use "mixins";
+
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: none;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+html {
+    font-size: 55%;
+}
+
+body {
+    height: 100vh;
+    background: variaveis.$bg-geral;
+}
+
+header {
+    height: 10rem;
+    width: 100%;
+    background: variaveis.$bg-header;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 2rem;
+    padding-right: 2rem;
+
+    img {
+        height: 8rem;
+    }
+
+    .procura {
+        position: relative;
+        width: 50rem;
+        height: 7rem;
+        input {
+            height: 100%;
+            border: none;
+            outline: none;
+            padding-left: 50px;
+            width: 0;
+            position: absolute;
+            top: 5;
+            left: 0;
+            background: none;
+            z-index: 3;
+            transition: width 1s ease-out;
+            cursor: pointer;
+        }
+        input:focus {
+            border: 5px solid variaveis.$bg-rosa-header;
+            border-radius: 25px;
+            width: 100%;
+            z-index: 1;
+            transition: width 1s ease-in;
+            color: #fff;
+        }
+        button {
+            height: 100%;
+            width: 5rem;
+            background: url("lupa.png") center no-repeat;
+            border: none;
+            position: absolute;
+            top: 5;
+            left: 0;
+            z-index: 2;
+            cursor: pointer;
+
+            i {
+                font-size: 5rem;
+                color: #fff;
+                padding-left: 1rem;
+            }
+        }
+        button:focus {
+            outline: none;
+        }
+        /* esconde o LABEL "Buscar" */
+        label {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            border: 0;
+        }
+    }
+
+    .carrinho {
+        width: 10rem;
+        height: 8rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        cursor: pointer;
+
+        i {
+            font-size: 8em;
+            outline: none;
+            color: #fff;
+            z-index: 2;
+        }
+
+        .noti {
+            position: absolute;
+            background: variaveis.$bg-rosa-header;
+            height: 3rem;
+            width: 3rem;
+            border-radius: 5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            top: 1rem;
+            right: 1rem;
+            z-index: 3;
+            display: none;
+
+            span {
+                color: #fff;
+                font-size: 1.5rem;
+                font-weight: 800;
+            }
+        }
+    }
+}
+
+main.index {
+    display: grid;
+    grid-template-rows: 10rem 31rem 10rem 31rem 10rem 31rem;
+
+    .titulo {
+        width: 15rem;
+        height: 5rem;
+        flex-shrink: 0;
+        margin: 1rem;
+        border-radius: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 3rem;
+        font-weight: 600;
+        align-self: center;
+    }
+
+    .livros {
+        display: flex;
+        justify-content: space-around;
+        margin-bottom: 1rem;
+
+        .item {
+            width: 21rem;
+            display: flex;
+            flex-direction: column;
+            border-radius: 12%;
+            padding-top: 0.5rem;
+            padding-bottom: 1.5rem;
+
+            img {
+                height: 15rem;
+                width: 12rem;
+                align-self: center;
+                margin-bottom: 0.5rem;
+                border-radius: 10%;
+            }
+
+            span {
+                font-size: 1.7rem;
+                font-weight: 800;
+                margin-left: 1rem;
+            }
+
+            button {
+                align-self: center;
+                height: 2rem;
+                width: 12rem;
+                background: none;
+                outline: none;
+                font-weight: 800;
+                cursor: pointer;
+                margin-top: auto;
+            }
+        }
+    }
+
+    .roxo {
+        background: variaveis.$bg-roxo;
+    }
+    .rosa {
+        background: variaveis.$bg-rosa;
+    }
+    .verde {
+        background: variaveis.$bg-verde;
+    }
+
+    .branco {
+        color: #fff;
+    }
+
+    .preto {
+        color: #000;
+    }
+}
+
+main.carrinho {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+
+    .table {
+        width: 80%;
+        border-collapse: collapse;
+        margin: 1.5rem auto;
+        padding: 1rem;
+        background: variaveis.$bg-carrinho;
+        border-radius: 0.5rem;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+        height: 53rem;
+        overflow: auto;
+        display: flex;
+        flex-direction: column;
+
+        tr {
+            th {
+                font-size: 1.3rem;
+                border-bottom: 1px solid #000;
+            }
+
+            .capa {
+                width: 20%;
+            }
+            .infos {
+                width: 65%;
+            }
+            .preco {
+                width: 15%;
+            }
+        }
+        tbody {
+            tr {
+                height: 15rem;
+                td {
+                    font-size: 1.3rem;
+                    padding-left: 4rem;
+                    border-bottom: 1px solid #000;
+                }
+
+                .infos{
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-around;
+                    height: 15rem;
+                    width: 100%;
+                    padding-left: 2rem;
+                    color: #fff;
+                    font-size: 1.8rem;
+                    font-weight: 700;
+                    
+                }
+
+                .acoes {
+                    input {
+                        width: 6rem;
+                        height: 3rem;
+                        margin-right: 1rem;
+                        padding-left: 1rem;
+                    }
+                    button {
+                        width: 10rem;
+                        height: 3rem;
+                        border-radius: 15%;
+                        outline: none;
+                        background: variaves.$bg-botao;
+
+                        i{
+                            margin-left: 1rem;
+                        }
+                    }
+                }
+
+                .preco {
+                    font-size: 1.8rem;
+                    font-weight: 700;
+                }
+            }
+        }
+        tfoot {
+            tr {
+                height: 15rem;
+                td {
+                    font-size: 1.3rem;
+                    padding-left: 4rem;
+                    font-size: 1.7rem;
+                    font-weight: 700;
+                }
+            }
+        }
+    }
+}
