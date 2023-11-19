@@ -120,6 +120,8 @@ header {
             top: 1rem;
             right: 1rem;
             z-index: 3;
+            text-align: center;
+            line-height: 3rem;
             display: none;
 
             span {
@@ -212,6 +214,7 @@ main.carrinho {
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
     padding: 2rem;
 
     .table {
@@ -277,7 +280,7 @@ main.carrinho {
                         height: 3rem;
                         border-radius: 15%;
                         outline: none;
-                        background: variaves.$bg-botao;
+                        background: variaveis.$bg-botao;
 
                         i{
                             margin-left: 1rem;
@@ -301,6 +304,80 @@ main.carrinho {
                     font-weight: 700;
                 }
             }
+        }
+    }
+
+    .finalizarCompra{
+        height: 5rem;
+        width: 25rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 1rem;
+        text-decoration: none;
+        color: #fff;
+        font-size: 2rem;
+
+        i{
+            margin-top: 0.5rem;
+            margin-left: 0.5rem ;
+
+        }
+
+    }
+    .roxo {
+        background: variaveis.$bg-roxo;
+    }
+    .rosa {
+        background: variaveis.$bg-rosa;
+    }
+    .verde {
+        background: variaveis.$bg-verde;
+    }
+
+    .branco {
+        color: #fff;
+    }
+
+    .preto {
+        color: #000;
+    }
+}
+
+main.QRCODE {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 2rem;
+
+    .pagamento {
+        width: 80%;
+        border-collapse: collapse;
+        margin: 1.5rem auto;
+        padding: 1rem;
+        background: variaveis.$bg-carrinho;
+        border-radius: 0.5rem;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+        height: 53rem;
+        overflow: auto;
+        display: flex;
+        flex-direction: column;
+
+        #qr-code{
+            display: flex;
+            justify-content: center;
+            img{
+                height: 30rem;
+                width: 30rem;
+            }
+
+        .precofinal {
+
+            color: #fff;
+        }
+        
+            
         }
     }
 }

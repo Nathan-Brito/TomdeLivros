@@ -115,6 +115,8 @@ header .carrinho .noti {
   top: 1rem;
   right: 1rem;
   z-index: 3;
+  text-align: center;
+  line-height: 3rem;
   display: none;
 }
 header .carrinho .noti span {
@@ -195,6 +197,7 @@ main.carrinho {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
   padding: 2rem;
 }
 main.carrinho .table {
@@ -253,7 +256,7 @@ main.carrinho .table tbody tr .acoes button {
   height: 3rem;
   border-radius: 15%;
   outline: none;
-  background: variave;
+  background: #D9D9D9;
 }
 main.carrinho .table tbody tr .acoes button i {
   margin-left: 1rem;
@@ -270,4 +273,66 @@ main.carrinho .table tfoot tr td {
   padding-left: 4rem;
   font-size: 1.7rem;
   font-weight: 700;
+}
+main.carrinho .finalizarCompra {
+  height: 5rem;
+  width: 25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 1rem;
+  text-decoration: none;
+  color: #fff;
+  font-size: 2rem;
+}
+main.carrinho .finalizarCompra i {
+  margin-top: 0.5rem;
+  margin-left: 0.5rem;
+}
+main.carrinho .roxo {
+  background: #C5B1D6;
+}
+main.carrinho .rosa {
+  background: #F7D5E3;
+}
+main.carrinho .verde {
+  background: #bae1d3;
+}
+main.carrinho .branco {
+  color: #fff;
+}
+main.carrinho .preto {
+  color: #000;
+}
+
+main.QRCODE {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 2rem;
+}
+main.QRCODE .pagamento {
+  width: 80%;
+  border-collapse: collapse;
+  margin: 1.5rem auto;
+  padding: 1rem;
+  background: #E7E7E7;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  height: 53rem;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+}
+main.QRCODE .pagamento #qr-code {
+  display: flex;
+  justify-content: center;
+}
+main.QRCODE .pagamento #qr-code img {
+  height: 30rem;
+  width: 30rem;
+}
+main.QRCODE .pagamento #qr-code .precofinal {
+  color: #fff;
 }/*# sourceMappingURL=style.css.map */
