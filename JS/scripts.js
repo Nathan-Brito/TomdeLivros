@@ -203,3 +203,15 @@ function downloadQRCode() {
 
     downloadLink.href = imageDataURL;
 }
+
+
+document.getElementById('finalizando').addEventListener('click', function(event) {
+    soma = somarCarrinho()
+    
+    if (soma <= 0.00) {
+        
+        alert('A condição não foi satisfeita. Não é possível mudar de página.');
+        
+        event.preventDefault();
+    }
+});
