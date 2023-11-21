@@ -6,8 +6,8 @@
     <link rel="stylesheet" href="/CSS/style.css">
     <link rel="icon" href="imagens/logo.png">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <script src="JS/scripts.js" defer></script>
-    <title>Carrinho de Compras</title>
+    
+    <title>Finalizando Compras</title>
 </head>
 <body>
     <header>
@@ -32,12 +32,18 @@
                 <h1>Agradecemos pela compra! <i class='bx bxs-star'></i></h1>
             </div>
             <div id="qr-code">
-                <img src="imagens/QRCode.png" alt="">
+            
             </div>
-            <div class="precofinal"></div>
+            <div class="precoQRCode">
+            </div>
+            <div class="downloadBnt">
+                <a href="#" id="download-link" download="qrcode.png" class="branco">Download QR Code</a>
+            </div>
+            
         </div>
     </main>
     
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script src="JS/scripts.js" defer></script>
 </body>
 </html>

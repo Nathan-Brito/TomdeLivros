@@ -12,6 +12,10 @@
 
 html {
     font-size: 55%;
+
+    @include mixins.mobile {
+        font-size: 40%;
+    }
 }
 
 body {
@@ -31,6 +35,10 @@ header {
 
     img {
         height: 8rem;
+        transition: 0.5s ease;
+    }
+    img:hover {
+        height: 10rem;
     }
 
     .procura {
@@ -62,13 +70,14 @@ header {
         button {
             height: 100%;
             width: 5rem;
-            background: url("lupa.png") center no-repeat;
             border: none;
             position: absolute;
             top: 5;
             left: 0;
             z-index: 2;
             cursor: pointer;
+            background: none;
+            transition: 0.5s ease;
 
             i {
                 font-size: 5rem;
@@ -79,7 +88,7 @@ header {
         button:focus {
             outline: none;
         }
-        /* esconde o LABEL "Buscar" */
+        
         label {
             position: absolute;
             width: 1px;
@@ -102,10 +111,14 @@ header {
         cursor: pointer;
 
         i {
-            font-size: 8em;
+            font-size: 8rem;
             outline: none;
             color: #fff;
             z-index: 2;
+            transition: 0.5s ease;
+        }
+        i:hover {
+            font-size: 10rem;
         }
 
         .noti {
@@ -118,17 +131,25 @@ header {
             align-items: center;
             justify-content: center;
             top: 1rem;
-            right: 1rem;
+            right: 0.5rem;
             z-index: 3;
             text-align: center;
             line-height: 3rem;
             display: none;
+            transition: 0.5s ease;
+
+            @include mixins.mobile {
+                top: 1rem;
+                right: 0;
+            }
 
             span {
                 color: #fff;
                 font-size: 1.5rem;
                 font-weight: 800;
+                transition: 0.5s ease;
             }
+            
         }
     }
 }
@@ -149,6 +170,12 @@ main.index {
         font-size: 3rem;
         font-weight: 600;
         align-self: center;
+
+        @include mixins.mobile {
+            font-size: 2rem;
+            width: 12rem;
+            height: 5rem;
+        }
     }
 
     .livros {
@@ -163,6 +190,7 @@ main.index {
             border-radius: 12%;
             padding-top: 0.5rem;
             padding-bottom: 1.5rem;
+            transition: 0.5s ease;
 
             img {
                 height: 15rem;
@@ -170,45 +198,80 @@ main.index {
                 align-self: center;
                 margin-bottom: 0.5rem;
                 border-radius: 10%;
+                transition: 0.5s ease;
+
+                @include mixins.mobile {
+                    height: 10rem;
+                    width: 8rem;
+                }
+            }
+            img:hover {
+                height: 18rem;
+                width: 15rem;
+
+                @include mixins.mobile {
+                    height: 10rem;
+                    width: 8rem;
+                }
             }
             
             span {
                 font-size: 1.7rem;
                 font-weight: 800;
                 margin-left: 1rem;
+                transition: 0.5s ease;
+
+                @include mixins.mobile {
+                    font-size: 1.5rem;
+                }
+            }
+            span:hover {
+                font-size: 2rem;
+                @include mixins.mobile {
+                    font-size: 1.5rem;
+                }
             }
 
             button {
                 align-self: center;
-                height: 2rem;
+                height: 5rem;
                 width: 12rem;
                 background: none;
                 outline: none;
                 font-weight: 800;
                 cursor: pointer;
                 margin-top: auto;
+                transition: 0.5s ease;
+            }
+
+            button:hover {
+                text-shadow: variaveis.$botao-verde 0.1rem 0.1rem 0.9rem;
+                font-size: 2rem;
+                // color: variaveis.$bg-logo
+            }
+
+            @include mixins.mobile {
+                height: 27rem;
+                width: 15rem;
+            }
+        }
+        .item:hover {
+            height: 32rem;
+            width: 25rem;
+
+            @include mixins.mobile {
+                height: 27rem;
+                width: 15rem;
+            }
+        }
+        @include mixins.mobile {
+            .item:nth-child(4), 
+            .item:nth-child(5) {
+                display: none
             }
         }
     }
 
-    .roxo {
-        background: variaveis.$bg-roxo;
-    }
-    .rosa {
-        background: variaveis.$bg-rosa;
-    }
-    .verde {
-        background: variaveis.$bg-verde;
-    }
-
-    .branco {
-        color: #fff;
-        text-shadow: #838383 0.1rem 0.1rem 0.9rem;
-    }
-
-    .preto {
-        color: #000;
-    }
 }
 
 main.carrinho {
@@ -226,7 +289,7 @@ main.carrinho {
         background: variaveis.$bg-carrinho;
         border-radius: 0.5rem;
         box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-        height: 53rem;
+        height: 90%;
         overflow: auto;
         display: flex;
         flex-direction: column;
@@ -254,6 +317,20 @@ main.carrinho {
                     font-size: 1.3rem;
                     padding-left: 4rem;
                     border-bottom: 1px solid #000;
+
+                    @include mixins.mobile {
+                        padding-left: 0.5rem;
+                    }
+                }
+
+                .imagem {
+                    width: 12rem; 
+                    height: 14rem;
+
+                    @include mixins.mobile {
+                        width: 8rem; 
+                        height: 10rem;
+                    }
                 }
 
                 .infos{
@@ -268,31 +345,47 @@ main.carrinho {
                     font-size: 1.8rem;
                     font-weight: 700;
                     
+                    span {
+                        transition: 0.5s ease;
+                    }
+                    
+                    span:hover {
+                        font-size: 2.3rem;
+                    }
                 }
 
                 .acoes {
-                    input {
-                        width: 6rem;
-                        height: 3rem;
-                        margin-right: 1rem;
-                        padding-left: 1rem;
-                    }
                     button {
                         width: 10rem;
                         height: 3rem;
                         border-radius: 15%;
                         outline: none;
                         background: variaveis.$bg-botao;
+                        transition: 0.5s ease;
+                        cursor: pointer;
+
+                        @include mixins.mobile {
+                            width: 12rem;
+                        }
 
                         i{
                             margin-left: 1rem;
                         }
+                    }
+                    button:Hover {
+                        width: 12rem;
+                        height: 5rem;
+                        font-size: 2rem;
                     }
                 }
 
                 .preco {
                     font-size: 1.8rem;
                     font-weight: 700;
+                    transition: 0.5s ease;
+                }
+                .preco:hover {
+                    font-size: 2.3rem;
                 }
             }
         }
@@ -304,6 +397,15 @@ main.carrinho {
                     padding-left: 4rem;
                     font-size: 1.7rem;
                     font-weight: 700;
+                    
+                }
+
+                .final {
+                    transition: 0.5s ease;
+                }
+                .final:hover {
+                    font-size: 2.3rem;
+                    text-shadow: #838383 0.1rem 0.1rem 0.9rem;
                 }
             }
         }
@@ -320,30 +422,17 @@ main.carrinho {
         color: #fff;
         text-shadow: #838383 0.1rem 0.1rem 0.9rem;
         font-size: 2rem;
+        transition: 0.5s ease;
 
         i{
             margin-top: 0.5rem;
             margin-left: 0.5rem ;
-
         }
-
     }
-    .roxo {
-        background: variaveis.$bg-roxo;
-    }
-    .rosa {
-        background: variaveis.$bg-rosa;
-    }
-    .verde {
-        background: variaveis.$bg-verde;
-    }
-
-    .branco {
-        color: #fff;
-    }
-
-    .preto {
-        color: #000;
+    .finalizarCompra:hover {
+        height: 7rem;
+        width: 33rem;
+        font-size: 3rem;
     }
 }
 
@@ -355,43 +444,112 @@ main.QRCODE {
     padding: 2rem;
 
     .pagamento {
-        width: 80%;
+        
         border-collapse: collapse;
         margin: 1.5rem auto;
         padding: 1rem;
         background: variaveis.$bg-carrinho;
         border-radius: 0.5rem;
         box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-        height: 64rem;
+        height: 90%;
         overflow: auto;
         display: flex;
         flex-direction: column;
         align-items: center;
 
+        @include mixins.mobile {
+            width: 95%;
+        }
+
         .titulo{
             h1{
                 font-size: 4rem;
                 margin-top: 2rem;
-                margin-bottom: 3rem;
+                margin-bottom: 1rem;
                 color: #fff;
                 text-shadow: #838383 0.1rem 0.1rem 0.9rem;
+
+                @include mixins.mobile {
+                    font-size: 3rem;
+                }
             }
         } 
 
         #qr-code{
+            height: 30rem;
+            width: 30rem;
             display: flex;
+            align-items: center;
             justify-content: center;
-            img{
-                height: 30rem;
-                width: 30rem;
+            }
+            
+            #qr-code img, #qr-code canvas{
+            max-width: 100% !important;
+            max-height: 100% !important;
             }
 
-        .precofinal {
+        .precoQRCode {
+            height: 10rem;
+            width: 100%;
+            margin-top: 1rem;
 
-            color: #fff;
+            p{
+                font-size: 3rem;
+                font-weight: 700;
+                text-align: center;
+
+                @include mixins.mobile {
+                    font-size: 2.5rem;
+                }
+            }
         }
 
-            
+        .downloadBnt {
+            background: variaveis.$bg-verde;
+            border-radius: 1rem;
+            box-shadow: variaveis.$bg-botao 0.5rem 0.5rem 0.9rem;;
+            height: 5rem;
+            width: 20rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: 0.5s ease;
+            margin-bottom: 1rem;
+
+            a {
+                text-decoration: none;
+                font-size: 1.5rem;
+                transition: 0.5s ease;
+            }
+        }
+        .downloadBnt:hover {
+            height: 8rem;
+            width: 25rem;
+            border-radius: 2rem;
+            a {
+                font-size: 2rem;
+            }
+        }
+
         }
     }
+
+
+.roxo {
+    background: variaveis.$bg-roxo;
 }
+.rosa {
+    background: variaveis.$bg-rosa;
+}
+.verde {
+    background: variaveis.$bg-verde;
+}
+
+.branco {
+    color: #fff;
+    text-shadow: #838383 0.1rem 0.1rem 0.9rem;
+}
+
+.preto {
+    color: #000;}

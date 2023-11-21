@@ -12,6 +12,11 @@
 html {
   font-size: 55%;
 }
+@media (max-width: 540px) {
+  html {
+    font-size: 40%;
+  }
+}
 
 body {
   height: 100vh;
@@ -30,12 +35,15 @@ header {
 }
 header img {
   height: 8rem;
+  transition: 0.5s ease;
+}
+header img:hover {
+  height: 10rem;
 }
 header .procura {
   position: relative;
   width: 50rem;
   height: 7rem;
-  /* esconde o LABEL "Buscar" */
 }
 header .procura input {
   height: 100%;
@@ -62,13 +70,14 @@ header .procura input:focus {
 header .procura button {
   height: 100%;
   width: 5rem;
-  background: url("lupa.png") center no-repeat;
   border: none;
   position: absolute;
   top: 5;
   left: 0;
   z-index: 2;
   cursor: pointer;
+  background: none;
+  transition: 0.5s ease;
 }
 header .procura button i {
   font-size: 5rem;
@@ -98,10 +107,14 @@ header .carrinho {
   cursor: pointer;
 }
 header .carrinho i {
-  font-size: 8em;
+  font-size: 8rem;
   outline: none;
   color: #fff;
   z-index: 2;
+  transition: 0.5s ease;
+}
+header .carrinho i:hover {
+  font-size: 10rem;
 }
 header .carrinho .noti {
   position: absolute;
@@ -113,16 +126,24 @@ header .carrinho .noti {
   align-items: center;
   justify-content: center;
   top: 1rem;
-  right: 1rem;
+  right: 0.5rem;
   z-index: 3;
   text-align: center;
   line-height: 3rem;
   display: none;
+  transition: 0.5s ease;
+}
+@media (max-width: 540px) {
+  header .carrinho .noti {
+    top: 1rem;
+    right: 0;
+  }
 }
 header .carrinho .noti span {
   color: #fff;
   font-size: 1.5rem;
   font-weight: 800;
+  transition: 0.5s ease;
 }
 
 main.index {
@@ -142,6 +163,13 @@ main.index .titulo {
   font-weight: 600;
   align-self: center;
 }
+@media (max-width: 540px) {
+  main.index .titulo {
+    font-size: 2rem;
+    width: 12rem;
+    height: 5rem;
+  }
+}
 main.index .livros {
   display: flex;
   justify-content: space-around;
@@ -154,6 +182,7 @@ main.index .livros .item {
   border-radius: 12%;
   padding-top: 0.5rem;
   padding-bottom: 1.5rem;
+  transition: 0.5s ease;
 }
 main.index .livros .item img {
   height: 15rem;
@@ -161,37 +190,79 @@ main.index .livros .item img {
   align-self: center;
   margin-bottom: 0.5rem;
   border-radius: 10%;
+  transition: 0.5s ease;
+}
+@media (max-width: 540px) {
+  main.index .livros .item img {
+    height: 10rem;
+    width: 8rem;
+  }
+}
+main.index .livros .item img:hover {
+  height: 18rem;
+  width: 15rem;
+}
+@media (max-width: 540px) {
+  main.index .livros .item img:hover {
+    height: 10rem;
+    width: 8rem;
+  }
 }
 main.index .livros .item span {
   font-size: 1.7rem;
   font-weight: 800;
   margin-left: 1rem;
+  transition: 0.5s ease;
+}
+@media (max-width: 540px) {
+  main.index .livros .item span {
+    font-size: 1.5rem;
+  }
+}
+main.index .livros .item span:hover {
+  font-size: 2rem;
+}
+@media (max-width: 540px) {
+  main.index .livros .item span:hover {
+    font-size: 1.5rem;
+  }
 }
 main.index .livros .item button {
   align-self: center;
-  height: 2rem;
+  height: 5rem;
   width: 12rem;
   background: none;
   outline: none;
   font-weight: 800;
   cursor: pointer;
   margin-top: auto;
+  transition: 0.5s ease;
 }
-main.index .roxo {
-  background: #C5B1D6;
+main.index .livros .item button:hover {
+  text-shadow: #89ddbe 0.1rem 0.1rem 0.9rem;
+  font-size: 2rem;
 }
-main.index .rosa {
-  background: #F7D5E3;
+@media (max-width: 540px) {
+  main.index .livros .item {
+    height: 27rem;
+    width: 15rem;
+  }
 }
-main.index .verde {
-  background: #bae1d3;
+main.index .livros .item:hover {
+  height: 32rem;
+  width: 25rem;
 }
-main.index .branco {
-  color: #fff;
-  text-shadow: #838383 0.1rem 0.1rem 0.9rem;
+@media (max-width: 540px) {
+  main.index .livros .item:hover {
+    height: 27rem;
+    width: 15rem;
+  }
 }
-main.index .preto {
-  color: #000;
+@media (max-width: 540px) {
+  main.index .livros .item:nth-child(4),
+  main.index .livros .item:nth-child(5) {
+    display: none;
+  }
 }
 
 main.carrinho {
@@ -209,7 +280,7 @@ main.carrinho .table {
   background: #E7E7E7;
   border-radius: 0.5rem;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-  height: 53rem;
+  height: 90%;
   overflow: auto;
   display: flex;
   flex-direction: column;
@@ -235,6 +306,21 @@ main.carrinho .table tbody tr td {
   padding-left: 4rem;
   border-bottom: 1px solid #000;
 }
+@media (max-width: 540px) {
+  main.carrinho .table tbody tr td {
+    padding-left: 0.5rem;
+  }
+}
+main.carrinho .table tbody tr .imagem {
+  width: 12rem;
+  height: 14rem;
+}
+@media (max-width: 540px) {
+  main.carrinho .table tbody tr .imagem {
+    width: 8rem;
+    height: 10rem;
+  }
+}
 main.carrinho .table tbody tr .infos {
   display: flex;
   flex-direction: column;
@@ -247,11 +333,11 @@ main.carrinho .table tbody tr .infos {
   font-size: 1.8rem;
   font-weight: 700;
 }
-main.carrinho .table tbody tr .acoes input {
-  width: 6rem;
-  height: 3rem;
-  margin-right: 1rem;
-  padding-left: 1rem;
+main.carrinho .table tbody tr .infos span {
+  transition: 0.5s ease;
+}
+main.carrinho .table tbody tr .infos span:hover {
+  font-size: 2.3rem;
 }
 main.carrinho .table tbody tr .acoes button {
   width: 10rem;
@@ -259,13 +345,29 @@ main.carrinho .table tbody tr .acoes button {
   border-radius: 15%;
   outline: none;
   background: #D9D9D9;
+  transition: 0.5s ease;
+  cursor: pointer;
+}
+@media (max-width: 540px) {
+  main.carrinho .table tbody tr .acoes button {
+    width: 12rem;
+  }
 }
 main.carrinho .table tbody tr .acoes button i {
   margin-left: 1rem;
 }
+main.carrinho .table tbody tr .acoes button:Hover {
+  width: 12rem;
+  height: 5rem;
+  font-size: 2rem;
+}
 main.carrinho .table tbody tr .preco {
   font-size: 1.8rem;
   font-weight: 700;
+  transition: 0.5s ease;
+}
+main.carrinho .table tbody tr .preco:hover {
+  font-size: 2.3rem;
 }
 main.carrinho .table tfoot tr {
   height: 15rem;
@@ -275,6 +377,13 @@ main.carrinho .table tfoot tr td {
   padding-left: 4rem;
   font-size: 1.7rem;
   font-weight: 700;
+}
+main.carrinho .table tfoot tr .final {
+  transition: 0.5s ease;
+}
+main.carrinho .table tfoot tr .final:hover {
+  font-size: 2.3rem;
+  text-shadow: #838383 0.1rem 0.1rem 0.9rem;
 }
 main.carrinho .finalizarCompra {
   height: 5rem;
@@ -287,25 +396,16 @@ main.carrinho .finalizarCompra {
   color: #fff;
   text-shadow: #838383 0.1rem 0.1rem 0.9rem;
   font-size: 2rem;
+  transition: 0.5s ease;
 }
 main.carrinho .finalizarCompra i {
   margin-top: 0.5rem;
   margin-left: 0.5rem;
 }
-main.carrinho .roxo {
-  background: #C5B1D6;
-}
-main.carrinho .rosa {
-  background: #F7D5E3;
-}
-main.carrinho .verde {
-  background: #bae1d3;
-}
-main.carrinho .branco {
-  color: #fff;
-}
-main.carrinho .preto {
-  color: #000;
+main.carrinho .finalizarCompra:hover {
+  height: 7rem;
+  width: 33rem;
+  font-size: 3rem;
 }
 
 main.QRCODE {
@@ -316,34 +416,105 @@ main.QRCODE {
   padding: 2rem;
 }
 main.QRCODE .pagamento {
-  width: 80%;
   border-collapse: collapse;
   margin: 1.5rem auto;
   padding: 1rem;
   background: #E7E7E7;
   border-radius: 0.5rem;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-  height: 64rem;
+  height: 90%;
   overflow: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
+@media (max-width: 540px) {
+  main.QRCODE .pagamento {
+    width: 95%;
+  }
+}
 main.QRCODE .pagamento .titulo h1 {
   font-size: 4rem;
   margin-top: 2rem;
-  margin-bottom: 3rem;
+  margin-bottom: 1rem;
   color: #fff;
   text-shadow: #838383 0.1rem 0.1rem 0.9rem;
 }
-main.QRCODE .pagamento #qr-code {
-  display: flex;
-  justify-content: center;
+@media (max-width: 540px) {
+  main.QRCODE .pagamento .titulo h1 {
+    font-size: 3rem;
+  }
 }
-main.QRCODE .pagamento #qr-code img {
+main.QRCODE .pagamento #qr-code {
   height: 30rem;
   width: 30rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-main.QRCODE .pagamento #qr-code .precofinal {
+main.QRCODE .pagamento #qr-code img, main.QRCODE .pagamento #qr-code canvas {
+  max-width: 100% !important;
+  max-height: 100% !important;
+}
+main.QRCODE .pagamento .precoQRCode {
+  height: 10rem;
+  width: 100%;
+  margin-top: 1rem;
+}
+main.QRCODE .pagamento .precoQRCode p {
+  font-size: 3rem;
+  font-weight: 700;
+  text-align: center;
+}
+@media (max-width: 540px) {
+  main.QRCODE .pagamento .precoQRCode p {
+    font-size: 2.5rem;
+  }
+}
+main.QRCODE .pagamento .downloadBnt {
+  background: #bae1d3;
+  border-radius: 1rem;
+  box-shadow: #D9D9D9 0.5rem 0.5rem 0.9rem;
+  height: 5rem;
+  width: 20rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: 0.5s ease;
+  margin-bottom: 1rem;
+}
+main.QRCODE .pagamento .downloadBnt a {
+  text-decoration: none;
+  font-size: 1.5rem;
+  transition: 0.5s ease;
+}
+main.QRCODE .pagamento .downloadBnt:hover {
+  height: 8rem;
+  width: 25rem;
+  border-radius: 2rem;
+}
+main.QRCODE .pagamento .downloadBnt:hover a {
+  font-size: 2rem;
+}
+
+.roxo {
+  background: #C5B1D6;
+}
+
+.rosa {
+  background: #F7D5E3;
+}
+
+.verde {
+  background: #bae1d3;
+}
+
+.branco {
   color: #fff;
+  text-shadow: #838383 0.1rem 0.1rem 0.9rem;
+}
+
+.preto {
+  color: #000;
 }/*# sourceMappingURL=style.css.map */

@@ -1,6 +1,6 @@
 //------------------------------------------------------------------------------------------------------------
 let bd_produtos = []
-let soma = 0;
+let soma = somarCarrinho();
 
 const botao = document.querySelector('.bntComprar');
 const botoes = document.querySelectorAll('.bntComprar');
@@ -12,12 +12,27 @@ botoes.forEach(botao => {
 //------------------------------------------------------------------------------------------------------------
 
 document.addEventListener('DOMContentLoaded', function () {
-    
+    const soma = somarCarrinho();
+    const qrText = soma.toString();
+    const qrSize = 300;
+
     const produtosLocalStorage = getLocalStorage();
     bd_produtos = produtosLocalStorage;
 
     console.log('Quantidade inicial no carrinho:', bd_produtos.length);
     atualizaQuantidadeCarrinho(bd_produtos.length);
+
+    generateQRCode(qrText, qrSize);
+
+    const precoFinalDiv = document.querySelector('.precoQRCode');
+
+    const paragrafo = document.createElement('p');
+    paragrafo.classList.add('branco');
+    paragrafo.textContent = `O valor total da sua compra foi de: R$${soma}`;
+    precoFinalDiv.appendChild(paragrafo);
+
+    const downloadBtn = document.querySelector('.downloadBnt');
+    downloadBtn.addEventListener('click', downloadQRCode);
 });
 
 function atualizaQuantidadeCarrinho(quantidade) {
@@ -33,67 +48,82 @@ function atualizaQuantidadeCarrinho(quantidade) {
         noti.style.display = 'none';
     }
 
-    
-
 }
 
 //------------------------------------------------------------------------------------------------------------
 
 function inserirProduto(){
-    
+
     const livro = this.closest(".item");
     console.log("chegou aqui");
-    
+
     const precoString = livro.querySelector('.preco').textContent.replace("R$", "").replace(",", ".").trim();
     const preco = parseFloat(precoString);
 
-     const produto = {
-            capa: livro.querySelector('img').getAttribute("src"),
-            titulo: livro.querySelector('.tituloLivro').textContent,
-            autor: livro.querySelector('.autor').textContent,
-            preco: preco,
-        }
+    const produto = {
+        capa: livro.querySelector('img').getAttribute("src"),
+        titulo: livro.querySelector('.tituloLivro').textContent,
+        autor: livro.querySelector('.autor').textContent,
+        preco: preco,
+    }
 
-        bd_produtos = getLocalStorage();
-        console.log(bd_produtos);
-        bd_produtos.push(produto);
-        atualizaQuantidadeCarrinho(bd_produtos.length)
-        setLocalStorage(bd_produtos);
-        updateTable();
-        
+    bd_produtos = getLocalStorage();
+    console.log(bd_produtos);
+    bd_produtos.push(produto);
+    atualizaQuantidadeCarrinho(bd_produtos.length)
+    setLocalStorage(bd_produtos);
+    updateTable();
 }
 
 //------------------------------------------------------------------------------------------------------------
+
 function getLocalStorage(){ 
     return JSON.parse(localStorage.getItem('bd_produtos')) || [] 
 }
-//------------------------------------------------------------------------------------------------------------
-function setLocalStorage(bd_produtos){
 
+//------------------------------------------------------------------------------------------------------------
+
+function setLocalStorage(bd_produtos){
     localStorage.setItem('bd_produtos', JSON.stringify(bd_produtos)) 
 }
+
 //------------------------------------------------------------------------------------------------------------
+
 function cleanTable(){
-    
     const tbody = document.querySelector('#tbProdutos>tbody');
     while (tbody.firstChild) {
         tbody.removeChild(tbody.firstChild);
     }
 }
+
 //------------------------------------------------------------------------------------------------------------
+
 function remove(button){
     const bd_produtos= getLocalStorage();
     const index = button.getAttribute('data-index');
-    
+
     bd_produtos.splice(index, 1); // Remove o contato do array pelo índice
-    
-    
+
     setLocalStorage(bd_produtos);
-    
     updateTable();
 }
 
 //------------------------------------------------------------------------------------------------------------
+
+function somarCarrinho() {
+    let soma = 0;
+    const bd_produtos = getLocalStorage();
+
+    bd_produtos.forEach(produto => {
+        soma += produto.preco;
+    });
+
+    console.log ("Aqui a soma:", soma)
+    return soma.toFixed(2)
+}
+
+//------------------------------------------------------------------------------------------------------------
+
 function valorTotal() {
     let soma = 0;
     const bd_produtos = getLocalStorage();
@@ -112,10 +142,7 @@ function valorTotal() {
         <td class="final">${soma.toFixed(2)}</td> 
     `;
     footer.appendChild(valor);
-
-    
 }
-
 
 //------------------------------------------------------------------------------------------------------------
 
@@ -132,9 +159,9 @@ function updateTable(){
 
 function newRow(produto, index) {
     const line = document.createElement("tr");
-  
+
     line.innerHTML = `  
-        <td><img src="${produto.capa}" alt="" style=" width: 100px; height: 120px;"></td>
+        <td><img class="imagem" src="${produto.capa}" alt=""></td>
         <td class="infos">
             <span class="informacoes">${produto.titulo}</span>
             <span class="informacoes">${produto.autor}</span>
@@ -146,13 +173,33 @@ function newRow(produto, index) {
     `;
 
     document.querySelector("#tbProdutos>tbody").appendChild(line);
-  }
+}
 //------------------------------------------------------------------------------------------------------------
 updateTable()
 valorTotal()
+//------------------------------------------------------------------------------------------------------------
+
+function generateQRCode(qrText, qrSize) {
+    const qrContainer = document.querySelector('#qr-code'); // Move a declaração para dentro da função
+    console.log("Chegou aqui dentro da função")
+    qrContainer.innerHTML = '';
+    new QRCode('qr-code', {
+        text: qrText, 
+        height: qrSize,
+        width: qrSize,
+        colorLight: '#fff',
+        colorDark: '#000'
+    });
+}
 
 //------------------------------------------------------------------------------------------------------------
 
+function downloadQRCode() {
+    const qrCanvas = document.querySelector('#qr-code canvas');
+    const downloadLink = document.querySelector('#download-link');
 
 
+    const imageDataURL = qrCanvas.toDataURL('image/png');
 
+    downloadLink.href = imageDataURL;
+}
