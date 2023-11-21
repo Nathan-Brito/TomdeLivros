@@ -207,10 +207,10 @@ function downloadQRCode() {
 
 document.getElementById('finalizando').addEventListener('click', function(event) {
     soma = somarCarrinho()
-    
+
     if (soma <= 0.00) {
         
-        alert('A condição não foi satisfeita. Não é possível mudar de página.');
+        alert('Seu carrinho esta vazio! Volte e escolha seus novos tons!');
         
         event.preventDefault();
     }
