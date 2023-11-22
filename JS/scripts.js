@@ -4,7 +4,6 @@ let soma = somarCarrinho();
 
 const botao = document.querySelector('.bntComprar');
 const botoes = document.querySelectorAll('.bntComprar');
-console.log(botao)
 botoes.forEach(botao => {
     botao.addEventListener('click', inserirProduto);
 });
@@ -19,7 +18,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const produtosLocalStorage = getLocalStorage();
     bd_produtos = produtosLocalStorage;
 
-    console.log('Quantidade inicial no carrinho:', bd_produtos.length);
     atualizaQuantidadeCarrinho(bd_produtos.length);
 
     generateQRCode(qrText, qrSize);
@@ -36,7 +34,6 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 function atualizaQuantidadeCarrinho(quantidade) {
-    console.log('Atualizando quantidade no carrinho para:', quantidade);
     const quatCar = document.querySelector('.quatCar');
     const noti = document.querySelector('.noti');
 
@@ -55,7 +52,6 @@ function atualizaQuantidadeCarrinho(quantidade) {
 function inserirProduto(){
 
     const livro = this.closest(".item");
-    console.log("chegou aqui");
 
     const precoString = livro.querySelector('.preco').textContent.replace("R$", "").replace(",", ".").trim();
     const preco = parseFloat(precoString);
@@ -102,8 +98,7 @@ function remove(button){
     const bd_produtos= getLocalStorage();
     const index = button.getAttribute('data-index');
 
-    bd_produtos.splice(index, 1); // Remove o contato do array pelo índice
-
+    bd_produtos.splice(index, 1);
     setLocalStorage(bd_produtos);
     updateTable();
 }
@@ -118,7 +113,6 @@ function somarCarrinho() {
         soma += produto.preco;
     });
 
-    console.log ("Aqui a soma:", soma)
     return soma.toFixed(2)
 }
 
@@ -180,8 +174,7 @@ valorTotal()
 //------------------------------------------------------------------------------------------------------------
 
 function generateQRCode(qrText, qrSize) {
-    const qrContainer = document.querySelector('#qr-code'); // Move a declaração para dentro da função
-    console.log("Chegou aqui dentro da função")
+    const qrContainer = document.querySelector('#qr-code');
     qrContainer.innerHTML = '';
     new QRCode('qr-code', {
         text: qrText, 
